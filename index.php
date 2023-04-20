@@ -1,12 +1,7 @@
-<!-- Conectando BD -->
-
 <?php
 include_once 'usuarios.php';
 $u = new Usuario;
 ?>
-
-
-<!-- Começo -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,18 +11,16 @@ $u = new Usuario;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style/login.css" rel="stylesheet">
+    <link href="./style/login.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="./imagens/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./imagens/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./imagens/favicon/favicon-16x16.png">
     <link rel="manifest" href="./imagens/favicon/site.webmanifest">
-    <title>BarberTime</title>
+    <title>BarberTime - Cadastro</title>
 
 </head>
 
 <body>
-
-<!-- Cabeçalho -->
-
     <header>
         <div id="titulo">
             <h1>Barber</h1>
@@ -48,12 +41,10 @@ $u = new Usuario;
         </ul>
     </header>
 
-<!-- Cadastro -->
+    <main>
+        <div class="main-display-flex">
 
-    <main >
-        <div class ="main-display-flex">
-
-            <div class ="main-index-aside">
+            <aside class="main-index-aside">
                 <h2><span>Agende agora</span></h2>
                 <h2>seu corte.</h2>
                 <p>
@@ -65,32 +56,35 @@ $u = new Usuario;
                     <input type="password" name="senha" placeholder="Senha">
                     <input type="submit" name = "cadastrar "value="Cadastrar">
                 </form>
-            </div>
+            </aside>
 
-
-<!-- Logo -->
-
-    <div class ="main-index-article">
+            <article class="main-index-article">
                 <img src="./imagens/logo.png" alt="BarberTime">
-            </div>
+            </article>
                 
-    </div>
+        </div>
 
-<!-- Mensagens Cadastro -->
-
-<?php
-    if (isset($_POST['nome'])){   
-
+        <?php
+if (isset($_POST['nome']))
+            {
+            
+            
                 $nome=($_POST['nome']);
                 $email=($_POST['email']);
                 $senha= ($_POST['senha']);
+                
+                
+                
             
-                if(!empty($nome) && !empty($email) && !empty($senha)){
-                    $u->conectar("cadastro","localhost","root","");
             
-                    if($u->msgErro== ""){
+                if(!empty($nome) && !empty($email) && !empty($senha) )
+            {
+                $u->conectar("cadastro","localhost","root","");
+                if($u->msgErro== "")
+                {
                    
-                    if($u->cadastrar($nome, $email, $senha)){
+                    if($u->cadastrar($nome, $email, $senha))
+                    {
 
                         header('location:login.php');
 
@@ -99,6 +93,7 @@ $u = new Usuario;
                     {
                         ?>
                          <div class= "msg-erro">
+                        </div>
                         Email ja cadastrado!
                         </div>
                         <?php
@@ -129,6 +124,8 @@ $u = new Usuario;
             ?>
  
     </main>
+     
 </body>
+
 
 </html>
